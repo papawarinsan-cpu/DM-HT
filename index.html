@@ -110,18 +110,6 @@ button,input,select{font:inherit}button{cursor:pointer}
 <script>
 /* ใส่ URL ของ Web App ที่ได้จาก Google Apps Script ตรงนี้ */
 const GAS_URL = "PASTE_YOUR_GAS_WEB_APP_URL_HERE";
-const STORAGE_KEY = "ncd_patients_local";
-
-const demoPatients = [
- {hn:"DM001",prefix:"นาย",name:"สมชาย ใจดี",age:62,disease:"เบาหวาน",bp:"146/92",sugar:182,village:"หมู่ 1",risk:"ต้องติดตาม"},
- {hn:"HT002",prefix:"นาง",name:"สมศรี รักสุขภาพ",age:58,disease:"ความดันโลหิตสูง",bp:"158/96",sugar:108,village:"หมู่ 2",risk:"เร่งด่วน"},
- {hn:"NCD003",prefix:"นาย",name:"วิชัย สุขใจ",age:67,disease:"เบาหวาน + ความดัน",bp:"134/84",sugar:126,village:"หมู่ 3",risk:"ปกติ"},
- {hn:"HT004",prefix:"นาง",name:"มาลี แสงทอง",age:71,disease:"ความดันโลหิตสูง",bp:"142/88",sugar:99,village:"หมู่ 4",risk:"ต้องติดตาม"},
- {hn:"DM005",prefix:"นาย",name:"ประเสริฐ พูนผล",age:55,disease:"เบาหวาน",bp:"128/78",sugar:112,village:"หมู่ 1",risk:"ปกติ"},
- {hn:"NCD006",prefix:"นางสาว",name:"นิตยา คำดี",age:64,disease:"เบาหวาน + ความดัน",bp:"165/101",sugar:205,village:"หมู่ 5",risk:"เร่งด่วน"},
- {hn:"HT007",prefix:"นาย",name:"อำนวย ศรีสุข",age:60,disease:"ความดันโลหิตสูง",bp:"130/82",sugar:101,village:"หมู่ 2",risk:"ปกติ"},
- {hn:"DM008",prefix:"นาย",name:"บุญมี ใจงาม",age:69,disease:"เบาหวาน",bp:"151/94",sugar:176,village:"หมู่ 6",risk:"ต้องติดตาม"}
-];
 
 let patients = [];
 let editingHn = "";
@@ -164,9 +152,7 @@ function showSection(id,btn){
 function loadData(){
   setLoading(true);
   if(GAS_URL.includes("PASTE_YOUR")){
-    let savedPatients = null;
-    try { savedPatients = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null"); } catch (_) {}
-    patients=normalizePatients(savedPatients||demoPatients); renderAll(); setLoading(false); return;
+    patients=[];renderAll();toast("กรุณาใส่ GAS_URL เพื่อดึงข้อมูลจาก Google Sheets");setLoading(false);return;
   }
   // JSONP: ใช้ GET เพื่อหลีกเลี่ยงปัญหา CORS ของ ContentService
   const cb="ncdCallback_"+Date.now();
@@ -223,9 +209,7 @@ function savePatient(){
   const isEdit=Boolean(editingHn);
   setLoading(true);
   if(GAS_URL.includes("PASTE_YOUR")){
-    if(isEdit){patients=patients.map(x=>x.hn===editingHn?patient:x);toast("แก้ไขข้อมูลผู้ป่วยในเครื่องนี้แล้ว")}
-    else{patients.push(patient);toast("เพิ่มรายชื่อผู้ป่วยในเครื่องนี้แล้ว")}
-    patients=normalizePatients(patients);localStorage.setItem(STORAGE_KEY,JSON.stringify(patients));renderAll();closeAddPatient();setLoading(false);return;
+    toast("ยังไม่สามารถบันทึกได้ กรุณาใส่ GAS_URL เพื่อเชื่อม Google Sheets");setLoading(false);return;
   }
   fetch(GAS_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:isEdit?"updatePatient":"addPatient",username:"admin",password:"1234",patient})})
     .then(()=>{closeAddPatient();toast(isEdit?"ส่งข้อมูลแก้ไขแล้ว":"ส่งข้อมูลเพิ่มรายชื่อแล้ว");setTimeout(loadData,800)})
