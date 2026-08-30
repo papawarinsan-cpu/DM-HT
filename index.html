@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NCD Community Care • Diabetes & Hypertension</title>
+<style>
+:root{
+  --pink:#ff4f93;--pink2:#ff78ad;--soft:#fff1f7;--soft2:#fff8fb;
+  --ink:#352936;--muted:#806f79;--white:#fff;--line:#f3dce6;
+  --green:#27ae78;--orange:#f39c45;--red:#e74c5d;--shadow:0 16px 45px rgba(160,72,111,.12);
+}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,"Noto Sans Thai",Tahoma,sans-serif;color:var(--ink);background:linear-gradient(135deg,#fff,#fff4f8 55%,#ffeaf3);min-height:100vh}
+button,input,select{font:inherit}button{cursor:pointer}
+.hidden{display:none!important}.app{min-height:100vh}.topbar{height:76px;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:10}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800}.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--pink),#ff9ac2);display:grid;place-items:center;color:#fff;font-size:22px;box-shadow:0 8px 22px rgba(255,79,147,.25)}
+.brand small{display:block;color:var(--muted);font-weight:500;font-size:11px;margin-top:2px}
+.userbox{display:flex;align-items:center;gap:12px}.avatar{width:38px;height:38px;border-radius:50%;background:var(--soft);display:grid;place-items:center;color:var(--pink);font-weight:800}
+.logout{border:1px solid var(--line);background:#fff;padding:9px 14px;border-radius:11px;color:var(--ink)}
+.layout{display:flex}.sidebar{width:250px;padding:24px 16px;border-right:1px solid var(--line);background:rgba(255,255,255,.62);min-height:calc(100vh - 76px);position:fixed;left:0;top:76px}.nav{display:grid;gap:7px}.nav button{border:0;background:transparent;text-align:left;padding:13px 15px;border-radius:13px;color:#6e5d67}.nav button.active,.nav button:hover{background:var(--soft);color:var(--pink);font-weight:700}
+.main{margin-left:250px;width:calc(100% - 250px);padding:30px;max-width:1600px}.hero{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:24px}.eyebrow{color:var(--pink);font-size:13px;font-weight:800;letter-spacing:.08em}.hero h1{margin:5px 0 7px;font-size:31px;letter-spacing:-.03em}.hero p{margin:0;color:var(--muted)}
+.actions{display:flex;gap:10px}.primary{border:0;background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff;padding:12px 17px;border-radius:12px;font-weight:700;box-shadow:0 9px 22px rgba(255,79,147,.2)}
+.secondary{border:1px solid var(--line);background:#fff;padding:11px 16px;border-radius:12px;color:var(--ink)}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:19px;box-shadow:var(--shadow);padding:20px}.stat{position:relative;overflow:hidden}.stat:after{content:"";position:absolute;width:100px;height:100px;border-radius:50%;background:var(--soft);right:-35px;top:-35px}.stat .icon{width:42px;height:42px;border-radius:13px;background:var(--soft);display:grid;place-items:center;color:var(--pink);font-size:20px}.stat h3{font-size:30px;margin:14px 0 4px}.stat p{margin:0;color:var(--muted);font-size:13px}.trend{font-size:12px;color:var(--green);margin-top:9px;font-weight:700}
+.two{display:grid;grid-template-columns:1.45fr 1fr;gap:16px;margin-top:16px}.cardtitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.cardtitle h2{font-size:17px;margin:0}.muted{color:var(--muted);font-size:12px}
+.bars{height:240px;display:flex;align-items:flex-end;gap:13px;padding:15px 4px 5px;border-bottom:1px solid var(--line)}.barwrap{flex:1;height:100%;display:flex;align-items:flex-end;justify-content:center;position:relative}.bar{width:min(46px,72%);border-radius:10px 10px 3px 3px;background:linear-gradient(180deg,#ff79ad,var(--pink));min-height:6px}.barlabel{position:absolute;bottom:-22px;font-size:11px;color:var(--muted)}.barvalue{position:absolute;top:2px;font-size:11px;font-weight:800;color:var(--pink)}
+.risk-list{display:grid;gap:12px}.risk{display:flex;align-items:center;gap:12px}.dot{width:11px;height:11px;border-radius:50%}.risk span:nth-child(2){flex:1;font-size:13px}.progress{height:8px;background:#f6e8ee;border-radius:99px;overflow:hidden;width:38%}.progress i{display:block;height:100%;background:var(--pink);border-radius:99px}.tablecard{margin-top:16px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px}.toolbar input,.toolbar select{border:1px solid var(--line);background:#fff;padding:11px 13px;border-radius:11px;outline:none}.toolbar input:focus,.toolbar select:focus{border-color:var(--pink)}.toolbar input{min-width:260px}.tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:800px}.table th,.table td{padding:13px 12px;border-bottom:1px solid #f4e7ed;text-align:left;font-size:13px}.table th{color:#806f79;font-size:12px;background:#fff9fb}.badge{display:inline-flex;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:800}.ok{background:#eaf9f2;color:#1d9665}.warn{background:#fff5e9;color:#d77b1b}.danger{background:#ffedf0;color:#d94152}.empty{padding:40px;text-align:center;color:var(--muted)}.mini{border:1px solid var(--line);background:#fff;padding:7px 10px;border-radius:9px;color:var(--ink);font-size:12px}.pillrow{display:flex;gap:10px;flex-wrap:wrap}.pill{background:var(--soft2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13px}
+.login{position:fixed;inset:0;display:grid;place-items:center;padding:25px;background:rgba(53,41,54,.32);backdrop-filter:blur(5px);z-index:80}.loginbox{width:min(430px,100%);background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:25px;padding:34px;box-shadow:0 25px 70px rgba(148,54,96,.22)}.loginlogo{width:65px;height:65px;border-radius:20px;background:linear-gradient(135deg,var(--pink),#ff9ac2);color:#fff;display:grid;place-items:center;font-size:29px;margin-bottom:18px}.login h1{margin:0 0 7px}.login p{color:var(--muted);font-size:13px;margin:0 0 24px}.field{margin-bottom:14px}.field label{display:block;font-size:12px;font-weight:700;margin-bottom:7px}.field input,.field select{width:100%;padding:13px;border:1px solid var(--line);border-radius:12px;outline:none;background:#fff}.field input:focus,.field select:focus{border-color:var(--pink);box-shadow:0 0 0 4px var(--soft)}.login .primary{width:100%;padding:13px;margin-top:6px}.error{color:var(--red);font-size:12px;margin-top:10px;min-height:18px}.formgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.formactions{display:flex;gap:10px;justify-content:flex-end;margin-top:4px}.loading{position:fixed;inset:0;background:rgba(255,255,255,.7);backdrop-filter:blur(3px);display:grid;place-items:center;z-index:99}.spinner{width:42px;height:42px;border:4px solid #ffd3e4;border-top-color:var(--pink);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.toast{position:fixed;right:22px;bottom:22px;background:#302630;color:#fff;padding:12px 16px;border-radius:12px;box-shadow:var(--shadow);z-index:100;font-size:13px}
+@media(max-width:1050px){.grid4{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.sidebar{width:80px}.sidebar .nav button{font-size:0;text-align:center}.sidebar .nav button::first-letter{font-size:18px}.main{margin-left:80px;width:calc(100% - 80px)}}
+@media(max-width:700px){.topbar{padding:0 14px}.brand div:last-child{display:none}.main{padding:18px;margin-left:0;width:100%}.sidebar{display:none}.hero{display:block}.actions{margin-top:15px}.grid4{grid-template-columns:1fr 1fr}.stat{padding:15px}.stat h3{font-size:24px}.toolbar input{min-width:100%}.formgrid{grid-template-columns:1fr}.formactions{justify-content:stretch}.formactions button{flex:1}}
+</style>
+</head>
+<body>
+<div id="loginView" class="login hidden">
+  <div class="loginbox">
+    <div class="loginlogo">♥</div>
+    <h1>NCD Community Care</h1>
+    <p>กรุณาเข้าสู่ระบบก่อนเพิ่มรายชื่อผู้ป่วย</p>
+    <div class="field"><label>USERNAME</label><input id="username" value="admin" autocomplete="username"></div>
+    <div class="field"><label>PASSWORD</label><input id="password" type="password" value="1234" autocomplete="current-password"></div>
+    <button class="primary" onclick="login()">เข้าสู่ระบบเพื่อเพิ่มรายชื่อ</button>
+    <button class="secondary" style="width:100%;margin-top:10px" onclick="closeLogin()">ยกเลิก</button>
+    <div id="loginError" class="error"></div>
+  </div>
+</div>
+
+<div id="app" class="app">
+  <header class="topbar">
+    <div class="brand"><div class="logo">♥</div><div>NCD Community Care<small>Diabetes & Hypertension Tracking</small></div></div>
+    <div class="userbox"><div class="avatar">A</div><div id="authLabel" style="font-size:13px;font-weight:700">ผู้ใช้งานทั่วไป</div><button id="logoutBtn" class="logout hidden" onclick="logout()">ออกจากระบบ</button></div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="nav">
+        <button class="active" onclick="showSection('dashboard',this)">▦ &nbsp; Dashboard</button>
+        <button onclick="showSection('patients',this)">♙ &nbsp; รายชื่อผู้ป่วย</button>
+        <button onclick="showSection('visits',this)">⌂ &nbsp; เยี่ยมบ้าน</button>
+        <button onclick="showSection('appointments',this)">◷ &nbsp; นัดหมาย</button>
+        <button onclick="showSection('reports',this)">▤ &nbsp; รายงาน</button>
+      </div>
+    </aside>
+    <main class="main">
+      <section id="dashboard">
+        <div class="hero">
+          <div><div class="eyebrow">COMMUNITY NCD MANAGEMENT</div><h1>ภาพรวมสุขภาพชุมชน</h1><p>ติดตามผู้ป่วยเบาหวานและความดันโลหิตสูงได้ในมุมมองเดียว</p></div>
+          <div class="actions"><button class="secondary" onclick="loadData()">↻ รีเฟรชข้อมูล</button><button class="primary" onclick="showSection('patients',document.querySelectorAll('.nav button')[1])">ดูรายชื่อผู้ป่วย</button></div>
+        </div>
+        <div class="grid4">
+          <div class="card stat"><div class="icon">👥</div><h3 id="sTotal">0</h3><p>ผู้ป่วยทั้งหมด</p><div class="trend">ข้อมูลล่าสุดจาก Google Sheets</div></div>
+          <div class="card stat"><div class="icon">🩸</div><h3 id="sDM">0</h3><p>ผู้ป่วยเบาหวาน</p><div class="trend">Diabetes</div></div>
+          <div class="card stat"><div class="icon">♥</div><h3 id="sHT">0</h3><p>ผู้ป่วยความดันโลหิตสูง</p><div class="trend">Hypertension</div></div>
+          <div class="card stat"><div class="icon">⚠</div><h3 id="sRisk">0</h3><p>กลุ่มต้องติดตาม</p><div class="trend">ควรติดตามใกล้ชิด</div></div>
+        </div>
+        <div class="two">
+          <div class="card"><div class="cardtitle"><h2>จำนวนผู้ป่วยแยกตามเดือน</h2><span class="muted">ตัวอย่างจากข้อมูลจริง</span></div><div id="bars" class="bars"></div></div>
+          <div class="card"><div class="cardtitle"><h2>ระดับการติดตาม</h2><span class="muted">Risk overview</span></div><div id="riskList" class="risk-list"></div></div>
+        </div>
+        <div class="card tablecard"><div class="cardtitle"><h2>ผู้ป่วยที่ควรติดตาม</h2><span class="muted">แสดงสูงสุด 8 ราย</span></div><div class="tablewrap"><table class="table"><thead><tr><th>HN</th><th>ชื่อผู้ป่วย</th><th>โรค</th><th>BP</th><th>น้ำตาล</th><th>สถานะ</th></tr></thead><tbody id="priorityBody"></tbody></table></div></div>
+      </section>
+
+      <section id="patients" class="hidden">
+        <div class="hero"><div><div class="eyebrow">PATIENT REGISTRY</div><h1>ทะเบียนผู้ป่วย</h1><p>ค้นหาและตรวจสอบข้อมูลผู้ป่วยในชุมชน</p></div><div class="actions"><button class="primary" onclick="openAddPatient()">+ เพิ่มรายชื่อผู้ป่วย</button></div></div>
+        <div id="patientFormCard" class="card hidden" style="margin-bottom:16px">
+          <div class="cardtitle"><h2>เพิ่มรายชื่อผู้ป่วย</h2><span class="muted">ต้องเข้าสู่ระบบก่อนบันทึกข้อมูล</span></div>
+          <div class="formgrid">
+            <div class="field"><label>HN</label><input id="newHn" placeholder="เช่น DM009"></div>
+            <div class="field"><label>คำนำหน้า</label><select id="newPrefix"><option>นาย</option><option>นาง</option><option>นางสาว</option><option>เด็กชาย</option><option>เด็กหญิง</option></select></div>
+            <div class="field"><label>ชื่อ-สกุล</label><input id="newName" placeholder="ชื่อ-สกุลผู้ป่วย"></div>
+            <div class="field"><label>อายุ</label><input id="newAge" type="number" min="0" placeholder="อายุ"></div>
+            <div class="field"><label>โรค</label><select id="newDisease"><option>เบาหวาน</option><option>ความดันโลหิตสูง</option><option>เบาหวาน + ความดัน</option></select></div>
+            <div class="field"><label>BP</label><input id="newBp" placeholder="เช่น 130/80"></div>
+            <div class="field"><label>น้ำตาล</label><input id="newSugar" type="number" min="0" placeholder="ค่าน้ำตาล"></div>
+            <div class="field"><label>หมู่บ้าน</label><input id="newVillage" placeholder="เช่น หมู่ 1"></div>
+            <div class="field"><label>สถานะอัตโนมัติ</label><input id="newRisk" readonly value="ปกติ"></div>
+          </div>
+          <div class="formactions"><button class="secondary" onclick="closeAddPatient()">ยกเลิก</button><button class="primary" onclick="savePatient()">บันทึกผู้ป่วย</button></div>
+        </div>
+        <div class="card"><div class="toolbar"><input id="search" placeholder="ค้นหา HN, คำนำหน้า, ชื่อ, หมู่บ้าน..." oninput="renderPatients()"><select id="diseaseFilter" onchange="renderPatients()"><option value="">ทุกโรค</option><option>เบาหวาน</option><option>ความดันโลหิตสูง</option><option>เบาหวาน + ความดัน</option></select><select id="riskFilter" onchange="renderPatients()"><option value="">ทุกสถานะ</option><option>ปกติ</option><option>ต้องติดตาม</option><option>เร่งด่วน</option></select></div><div class="tablewrap"><table class="table"><thead><tr><th>HN</th><th>คำนำหน้า</th><th>ชื่อ-สกุล</th><th>อายุ</th><th>โรค</th><th>BP</th><th>น้ำตาล</th><th>หมู่บ้าน</th><th>สถานะ</th><th>จัดการ</th></tr></thead><tbody id="patientBody"></tbody></table></div></div>
+      </section>
+
+      <section id="visits" class="hidden"><div class="hero"><div><div class="eyebrow">HOME VISIT</div><h1>ติดตามการเยี่ยมบ้าน</h1><p>จัดลำดับผู้ป่วยที่ควรได้รับการติดตาม</p></div></div><div class="card"><div class="tablewrap"><table class="table"><thead><tr><th>ลำดับ</th><th>HN</th><th>ชื่อผู้ป่วย</th><th>BP</th><th>น้ำตาล</th><th>สถานะ</th><th>นัดติดตาม</th></tr></thead><tbody id="visitBody"></tbody></table></div></div></section>
+      <section id="appointments" class="hidden"><div class="hero"><div><div class="eyebrow">APPOINTMENT</div><h1>นัดหมายและขาดนัด</h1><p>ติดตามวันนัดและรายการที่ต้องดำเนินการ</p></div></div><div class="card"><div class="tablewrap"><table class="table"><thead><tr><th>วันที่นัด</th><th>HN</th><th>ชื่อผู้ป่วย</th><th>โรค</th><th>สถานะ</th></tr></thead><tbody id="appointmentBody"></tbody></table></div></div></section>
+      <section id="reports" class="hidden"><div class="hero"><div><div class="eyebrow">REPORTS</div><h1>รายงาน</h1><p>สรุปข้อมูลเพื่อใช้ในการวางแผนดูแลผู้ป่วย</p></div></div><div class="card"><div id="reportSummary" class="pillrow"></div></div></section>
+    </main>
+  </div>
+</div>
+<div id="loading" class="loading hidden"><div class="spinner"></div></div>
+<div id="toast" class="toast hidden"></div>
+
+<script>
+/* ใส่ URL ของ Web App ที่ได้จาก Google Apps Script ตรงนี้ */
+const GAS_URL = "PASTE_YOUR_GAS_WEB_APP_URL_HERE";
+const STORAGE_KEY = "ncd_patients_local";
+
+const demoPatients = [
+ {hn:"DM001",prefix:"นาย",name:"สมชาย ใจดี",age:62,disease:"เบาหวาน",bp:"146/92",sugar:182,village:"หมู่ 1",risk:"ต้องติดตาม"},
+ {hn:"HT002",prefix:"นาง",name:"สมศรี รักสุขภาพ",age:58,disease:"ความดันโลหิตสูง",bp:"158/96",sugar:108,village:"หมู่ 2",risk:"เร่งด่วน"},
+ {hn:"NCD003",prefix:"นาย",name:"วิชัย สุขใจ",age:67,disease:"เบาหวาน + ความดัน",bp:"134/84",sugar:126,village:"หมู่ 3",risk:"ปกติ"},
+ {hn:"HT004",prefix:"นาง",name:"มาลี แสงทอง",age:71,disease:"ความดันโลหิตสูง",bp:"142/88",sugar:99,village:"หมู่ 4",risk:"ต้องติดตาม"},
+ {hn:"DM005",prefix:"นาย",name:"ประเสริฐ พูนผล",age:55,disease:"เบาหวาน",bp:"128/78",sugar:112,village:"หมู่ 1",risk:"ปกติ"},
+ {hn:"NCD006",prefix:"นางสาว",name:"นิตยา คำดี",age:64,disease:"เบาหวาน + ความดัน",bp:"165/101",sugar:205,village:"หมู่ 5",risk:"เร่งด่วน"},
+ {hn:"HT007",prefix:"นาย",name:"อำนวย ศรีสุข",age:60,disease:"ความดันโลหิตสูง",bp:"130/82",sugar:101,village:"หมู่ 2",risk:"ปกติ"},
+ {hn:"DM008",prefix:"นาย",name:"บุญมี ใจงาม",age:69,disease:"เบาหวาน",bp:"151/94",sugar:176,village:"หมู่ 6",risk:"ต้องติดตาม"}
+];
+
+let patients = [];
+let editingHn = "";
+let pendingEditIndex = null;
+function $(id){return document.getElementById(id)}
+function login(){
+  const u=$("username").value.trim(), p=$("password").value;
+  if(u==="admin" && p==="1234"){
+    sessionStorage.setItem("ncd_login","1"); $("loginView").classList.add("hidden"); updateAuthUi();
+    if(pendingEditIndex!==null){const i=pendingEditIndex;pendingEditIndex=null;editPatient(i)}else openAddPatient();
+  }else $("loginError").textContent="Username หรือ Password ไม่ถูกต้อง";
+}
+function logout(){sessionStorage.removeItem("ncd_login");updateAuthUi();closeAddPatient();toast("ออกจากระบบเพิ่มรายชื่อแล้ว")}
+function isAdmin(){return sessionStorage.getItem("ncd_login")==="1"}
+function updateAuthUi(){
+  $("authLabel").textContent=isAdmin()?"Administrator":"ผู้ใช้งานทั่วไป";
+  $("logoutBtn").classList.toggle("hidden",!isAdmin());
+}
+function boot(){updateAuthUi();loadData()}
+function openLogin(){$("loginError").textContent="";$("loginView").classList.remove("hidden");setTimeout(()=>$("username").focus(),50)}
+function closeLogin(){$("loginView").classList.add("hidden")}
+function openAddPatient(){
+  if(!isAdmin()){openLogin();return}
+  $("patientFormCard").classList.remove("hidden");
+  setTimeout(()=>$("newHn").focus(),50);
+}
+function closeAddPatient(){$("patientFormCard").classList.add("hidden");clearPatientForm()}
+function clearPatientForm(){
+  ["newHn","newName","newAge","newBp","newSugar","newVillage"].forEach(id=>$(id).value="");
+  $("newPrefix").value="นาย";$("newDisease").value="เบาหวาน";$("newRisk").value="ปกติ";editingHn="";$("newHn").disabled=false;
+}
+function showSection(id,btn){
+  document.querySelectorAll("main section").forEach(s=>s.classList.add("hidden")); $(id).classList.remove("hidden");
+  document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active")); if(btn)btn.classList.add("active");
+  if(id==="patients")renderPatients();
+  if(id==="visits")renderVisits();
+  if(id==="appointments")renderAppointments();
+  if(id==="reports")renderReports();
+}
+function loadData(){
+  setLoading(true);
+  if(GAS_URL.includes("PASTE_YOUR")){
+    let savedPatients = null;
+    try { savedPatients = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null"); } catch (_) {}
+    patients=normalizePatients(savedPatients||demoPatients); renderAll(); setLoading(false); return;
+  }
+  // JSONP: ใช้ GET เพื่อหลีกเลี่ยงปัญหา CORS ของ ContentService
+  const cb="ncdCallback_"+Date.now();
+  window[cb]=(data)=>{try{patients=normalizePatients(Array.isArray(data.patients)?data.patients:[]);renderAll();toast("โหลดข้อมูลจาก Google Sheets สำเร็จ")}finally{delete window[cb];script.remove();setLoading(false)}};
+  const script=document.createElement("script");
+  script.src=GAS_URL+"?action=dashboard&callback="+cb+"&t="+Date.now();
+  script.onerror=()=>{delete window[cb];script.remove();patients=[];renderAll();toast("เชื่อมต่อ GAS ไม่สำเร็จ — ตรวจสอบ URL / การ Deploy");setLoading(false)};
+  document.body.appendChild(script);
+}
+function renderAll(){renderStats();renderBars();renderRisk();renderPriority();renderPatients();renderVisits();renderAppointments();renderReports()}
+function renderStats(){
+  const total=patients.length, dm=patients.filter(x=>String(x.disease).includes("เบาหวาน")).length, ht=patients.filter(x=>String(x.disease).includes("ความดัน")).length, risk=patients.filter(x=>x.risk!=="ปกติ").length;
+  $("sTotal").textContent=total;$("sDM").textContent=dm;$("sHT").textContent=ht;$("sRisk").textContent=risk;
+}
+function renderBars(){
+  const months=["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค."], vals=months.map((_,i)=>Math.max(1,Math.round(patients.length*(.45+i*.07))));
+  const max=Math.max(...vals,1);$("bars").innerHTML=vals.map((v,i)=>`<div class="barwrap"><span class="barvalue">${v}</span><div class="bar" style="height:${Math.round(v/max*82)}%"></div><span class="barlabel">${months[i]}</span></div>`).join("");
+}
+function renderRisk(){
+  const n=patients.length||1, groups=[["ปกติ","ok"],["ต้องติดตาม","warn"],["เร่งด่วน","danger"]];
+  $("riskList").innerHTML=groups.map(([name,cl])=>{let c=patients.filter(x=>x.risk===name).length;return `<div class="risk"><i class="dot ${cl}" style="background:currentColor"></i><span>${name}</span><div class="progress"><i style="width:${Math.round(c/n*100)}%"></i></div><b>${c}</b></div>`}).join("");
+}
+function badge(r){const cl=r==="ปกติ"?"ok":r==="เร่งด่วน"?"danger":"warn";return `<span class="badge ${cl}">${r||"ไม่ระบุ"}</span>`}
+function renderPriority(){
+  const list=patients.filter(x=>x.risk!=="ปกติ").slice(0,8);
+  $("priorityBody").innerHTML=list.length?list.map(x=>`<tr><td>${esc(x.hn)}</td><td><b>${esc(fullName(x))}</b></td><td>${esc(x.disease)}</td><td>${esc(x.bp)}</td><td>${esc(x.sugar)}</td><td>${badge(x.risk)}</td></tr>`).join(""):`<tr><td colspan="6" class="empty">ไม่มีรายการที่ต้องติดตาม</td></tr>`;
+}
+function renderPatients(){
+  const q=($("search")?.value||"").toLowerCase(), d=$("diseaseFilter")?.value||"", r=$("riskFilter")?.value||"";
+  const list=patients.filter(x=>(!q||Object.values(x).join(" ").toLowerCase().includes(q))&&(!d||x.disease===d)&&(!r||x.risk===r));
+  $("patientBody").innerHTML=list.length?list.map(x=>`<tr><td>${esc(x.hn)}</td><td>${esc(x.prefix)}</td><td><b>${esc(x.name)}</b></td><td>${esc(x.age)}</td><td>${esc(x.disease)}</td><td>${esc(x.bp)}</td><td>${esc(x.sugar)}</td><td>${esc(x.village)}</td><td>${badge(x.risk)}</td><td><button class="mini" onclick="editPatient(${patients.indexOf(x)})">แก้ไข</button></td></tr>`).join(""):`<tr><td colspan="10" class="empty">ไม่พบข้อมูลผู้ป่วย</td></tr>`;
+}
+function editPatient(index){
+  if(!isAdmin()){pendingEditIndex=index;openLogin();return}
+  const p=patients[index];if(!p)return;
+  editingHn=p.hn;$("patientFormCard").classList.remove("hidden");$("newHn").value=p.hn;$("newPrefix").value=p.prefix||"นาย";$("newName").value=p.name;$("newAge").value=p.age;$("newDisease").value=p.disease||"เบาหวาน";$("newBp").value=p.bp;$("newSugar").value=p.sugar;$("newVillage").value=p.village;$("newRisk").value=calculateRisk(p);$("newHn").disabled=true;
+}
+function savePatient(){
+  if(!isAdmin()){openLogin();return}
+  const patient={
+    hn:$("newHn").value.trim(),
+    prefix:$("newPrefix").value,
+    name:$("newName").value.trim(),
+    age:$("newAge").value.trim(),
+    disease:$("newDisease").value,
+    bp:$("newBp").value.trim(),
+    sugar:$("newSugar").value.trim(),
+    village:$("newVillage").value.trim(),
+    risk:""
+  };
+  patient.risk=calculateRisk(patient);
+  if(!patient.hn){toast("กรุณาระบุ HN");$("newHn").focus();return}
+  if(!patient.name){toast("กรุณาระบุชื่อผู้ป่วย");$("newName").focus();return}
+  const isEdit=Boolean(editingHn);
+  setLoading(true);
+  if(GAS_URL.includes("PASTE_YOUR")){
+    if(isEdit){patients=patients.map(x=>x.hn===editingHn?patient:x);toast("แก้ไขข้อมูลผู้ป่วยในเครื่องนี้แล้ว")}
+    else{patients.push(patient);toast("เพิ่มรายชื่อผู้ป่วยในเครื่องนี้แล้ว")}
+    patients=normalizePatients(patients);localStorage.setItem(STORAGE_KEY,JSON.stringify(patients));renderAll();closeAddPatient();setLoading(false);return;
+  }
+  fetch(GAS_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:isEdit?"updatePatient":"addPatient",username:"admin",password:"1234",patient})})
+    .then(()=>{closeAddPatient();toast(isEdit?"ส่งข้อมูลแก้ไขแล้ว":"ส่งข้อมูลเพิ่มรายชื่อแล้ว");setTimeout(loadData,800)})
+    .catch(()=>toast("บันทึกไม่สำเร็จ กรุณาตรวจสอบ GAS_URL / การ Deploy"))
+    .finally(()=>setLoading(false));
+}
+function normalizePatients(list){return list.map(p=>({...p,prefix:p.prefix||p.Prefix||"",risk:calculateRisk(p),nextFollowup:p.nextFollowup||nextFollowup(calculateRisk(p))}))}
+function calculateRisk(p){
+  const bp=parseBp(p.bp||p.BP), sugar=Number(p.sugar||p.Sugar||0);
+  if(bp.sys>=160||bp.dia>=100||sugar>=200)return "เร่งด่วน";
+  if(bp.sys>=140||bp.dia>=90||sugar>=126)return "ต้องติดตาม";
+  return "ปกติ";
+}
+function parseBp(v){const m=String(v||"").match(/(\d{2,3})\s*\/\s*(\d{2,3})/);return {sys:m?Number(m[1]):0,dia:m?Number(m[2]):0}}
+function nextFollowup(risk){const d=new Date();d.setDate(d.getDate()+({"เร่งด่วน":3,"ต้องติดตาม":14,"ปกติ":90}[risk]||30));return d.toLocaleDateString("th-TH")}
+function renderVisits(){
+  const list=patients.filter(x=>x.risk!=="ปกติ").sort((a,b)=>riskScore(b.risk)-riskScore(a.risk));
+  $("visitBody").innerHTML=list.length?list.map((x,i)=>`<tr><td>${i+1}</td><td>${esc(x.hn)}</td><td><b>${esc(fullName(x))}</b></td><td>${esc(x.bp)}</td><td>${esc(x.sugar)}</td><td>${badge(x.risk)}</td><td>${esc(x.nextFollowup||nextFollowup(x.risk))}</td></tr>`).join(""):`<tr><td colspan="7" class="empty">ไม่มีผู้ป่วยที่ต้องติดตาม</td></tr>`;
+}
+function renderAppointments(){
+  const list=[...patients].sort((a,b)=>riskScore(b.risk)-riskScore(a.risk)).slice(0,20);
+  $("appointmentBody").innerHTML=list.length?list.map(x=>`<tr><td>${esc(x.nextFollowup||nextFollowup(x.risk))}</td><td>${esc(x.hn)}</td><td><b>${esc(fullName(x))}</b></td><td>${esc(x.disease)}</td><td>${badge(x.risk)}</td></tr>`).join(""):`<tr><td colspan="5" class="empty">ไม่มีข้อมูลนัดหมาย</td></tr>`;
+}
+function renderReports(){
+  const total=patients.length, urgent=patients.filter(x=>x.risk==="เร่งด่วน").length, follow=patients.filter(x=>x.risk==="ต้องติดตาม").length, normal=patients.filter(x=>x.risk==="ปกติ").length;
+  $("reportSummary").innerHTML=[["ผู้ป่วยทั้งหมด",total],["ปกติ",normal],["ต้องติดตาม",follow],["เร่งด่วน",urgent],["สัดส่วนต้องติดตาม",total?Math.round((urgent+follow)/total*100)+"%":"0%"]].map(([k,v])=>`<div class="pill"><b>${v}</b><br><span class="muted">${k}</span></div>`).join("");
+}
+function riskScore(r){return r==="เร่งด่วน"?2:r==="ต้องติดตาม"?1:0}
+function fullName(p){return [p.prefix,p.name].filter(Boolean).join(" ")}
+function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function setLoading(v){$("loading").classList.toggle("hidden",!v)}
+function toast(t){$("toast").textContent=t;$("toast").classList.remove("hidden");setTimeout(()=>$("toast").classList.add("hidden"),2800)}
+["newBp","newSugar"].forEach(id=>document.addEventListener("input",e=>{if(e.target&&e.target.id===id)$("newRisk").value=calculateRisk({bp:$("newBp").value,sugar:$("newSugar").value})}));
+boot();
+</script>
+</body>
+</html>
